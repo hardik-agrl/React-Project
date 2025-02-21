@@ -30,7 +30,11 @@ function App() {
     <NavBar/>
     </div>
     <LeftSideBar/>
-    <RightSideBar/>
+    {/* <RightSideBar/> */}
+    <OnlineConfig/>
+    <ImportData/>
+    <OfflineConfig/>
+    <ImportNavData/>
     <Footer/>
     {/* <OnlineConfig/> */}
     </>
