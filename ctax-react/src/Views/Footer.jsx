@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer fixed-bottom justify-content-center">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
@@ -11,9 +11,7 @@ function Footer() {
           </div>
           <div className="col-md-6">
             <div className="text-md-right footer-links d-none d-sm-block">
-              {/* <a href="javascript:void(0);">About Us</a>
-              <a href="javascript:void(0);">Help</a>
-              <a href="javascript:void(0);">Contact Us</a> */}
+              
             </div>
           </div>
         </div>

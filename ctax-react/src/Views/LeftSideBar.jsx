@@ -1,40 +1,48 @@
 import React from 'react';
+import { Outlet, Link } from "react-router-dom";
 
 function LeftSideBar() {
   return (
-    <div>
-      <div className="left-side-menu">
+    <div className='col-2 border-end me-5 ps-4 pb-4'>
+      <div className="left-side-menu ">
         <div className="h-100" data-simplebar>
           
 
           <div id="sidebar-menu">
-            <ul id="side-menu">
-              <li className="menu-title">Navigation</li>
+            <ul id="side-menu" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              <h3 className="menu-title">Navigation</h3>
               <li>
-                <a href="/Home/Index">
-                  <i className="mdi mdi-domain"></i>
-                  <span> Online Config </span>
-                </a>
-              </li>
-              <li id="li_sas_import_data" style={{ display: "none" }}>
-                <a href="/Home/ImportData">
-                  <i className="mdi mdi-domain"></i>
-                  <span> Import Data </span>
-                </a>
+               
+              <i className="mdi mdi-domain"></i>
+                  <Link to="/"> Online Config </Link>
+                
               </li>
               <li>
-                <a href="/Home/NavConfig">
+                
+              <i className="mdi mdi-domain"></i>
+                  <Link to="/importdata"> Import Data</Link>
+                
+              </li>
+              
+              <li>
+                
                   <i className="mdi mdi-domain"></i>
-                  <span> Offline Config </span>
-                </a>
+                  
+                  <Link to="/offlineConfig">  Offline Config</Link>
+                 
+
+                
               </li>
               <li>
-                <a href="/Home/ImportNavData">
+                
                   <i className="mdi mdi-domain"></i>
-                  <span> Import Nav Data </span>
-                </a>
+                  <Link to="/ImportNavData">  Import Nav Data</Link>
+                  
+
               </li>
             </ul>
+            <Outlet />
+
           </div>
 
           <div className="clearfix"></div>

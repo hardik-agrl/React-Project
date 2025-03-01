@@ -1,59 +1,31 @@
-import { useState } from "react";
-
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import ImportNavData from "./componenets/ImportNavData";
-import Navbar from "./componenets/navbar";
-import Leftbar from "./componenets/leftbar";
-import Body from "./componenets/Body";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import ImportData from "./componenets/importData";
-import OfflineConfig from "./componenets/OfflineConfig";
-import OnlineConfig from "./componenets/OnlineConfig";
-import Login from "./componenets/Login";
+
 import Navbar2 from "./componenets/navbar2";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import NavBar from "./Views/NavBar";
-import Header from "./Views/Header";
 import LeftSideBar from "./Views/LeftSideBar";
 import Footer from "./Views/Footer";
-import RightSideBar from "./Views/RightSideBar";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-
-
+import Body from "./componenets/Body";
+import Navbar from "./componenets/Navbar";
+// import Navbar3 from "./componenets/Navbar3"
+import NavBar from "./Views/NavBar";
+import Navbar4 from './componenets/Navbar4'
 function App() {
   return (
-    <>
-    <div className="d-flex ">
-
-    <NavBar/>
-    </div>
-    <LeftSideBar/>
-    {/* <RightSideBar/> */}
-    <OnlineConfig/>
-    <ImportData/>
-    <OfflineConfig/>
-    <ImportNavData/>
-    <Footer/>
-    {/* <OnlineConfig/> */}
-    </>
-    
-    //     <Router>
-    
-    //     <Navbar2 />
-    //     {/* <div className="mainWrapper"> */}
-    //       <Leftbar />
-
-    //       <Body />
-    //       <Routes>
-    //         {/* <Route path="/" element={<OnlineConfig />} /> */}
-    //         <Route path="/offline" element={<OfflineConfig />} />
-    //         {/* <Route path="/import" element={<ImportNavData />} /> */}
-    //       </Routes>
-    //     {/* </div> */}
-    //   {/* </div> */}
-    // </Router>
+    <BrowserRouter>
+      
+      <Navbar2 />
+      {/* <Navbar2 /> */}
+      
+      <div className="min-vh-90">
+        <div className="d-flex">
+          <LeftSideBar />
+          <Body />
+        </div>
+      </div>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,156 @@
+:root{
+  --teal:#2ec1ac;
+  --teal_hover:#157062;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.h-font {
+    font-family: 'Merienda', cursive;
+}
+
+
+
+  .custom-bg{
+    background-color:var(--teal);
+  }
+
+  .custom-bg:hover{
+    background-color: var(--teal_hover);
+  }
+
+  .h-line{
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+  }
+
+  .pop:hover{
+    border-top-color: var(--teal) !important;
+    transform: scale(1.03);
+    transition: all 0.3s;
+  }
+
+ 
+   /*for Menu*/
+@media all and (min-width: 992px) {
+  .navbar .dropdown-menu-end {
+      left: 0;
+      right: auto;
+  }
+
+  /*.navbar .nav-item {
+      font-size: 16px;
+  }*/
+
+  @media (max-width: 991.98px) {
+    .navbar .nav-item .nav-link {
+      color: #ffffff; /* Add your desired color here */
+    }
+  }
+
+  
+
+   .navbar .nav-item .nav-link {
+          color: rgb(223, 223, 226);
+          transition: all 0.8s;
+          font-size: 15px;
+      }
+
+  .navbar .nav-item:hover .nav-link {
+      color: rgb(255, 255, 255);
+      /* display: block; */
+      /* background-color: rgb(190, 73, 89); */
+      /* border-radius: 2px; */
+      /*text-shadow:0px 0px 3px #8beb00;*/
+      
+  }
+
+  .navbar .nav-item .dropdown-menu {
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+      margin-top: 0;
+      border: none;
+      border-top: 3px solid rgb(209, 53, 74);
+      box-shadow: 0px 0px 8px rgb(95, 93, 93);
+      border-radius: 0;
+      /* background-color: rgba(255, 255, 255, 0.9); */
+      background-color: rgb(255, 255, 255);
+      /* transform: translateY(-20%); Adjust the initial position *//* use when slide down is use*/
+      font-size: 13px;
+  }
+
+  .dropdown-menu .dropdown-item {
+      color: rgb(32, 32, 32);
+      width: 220px;/*optional for same size dropdown menu width*/
+     /* font-size: 12px;
+      font-family: Arial;*/
+      
+  }
+
+      .dropdown-menu .dropdown-item:hover {
+          /* background-color: rgba(18, 83, 212, 0.7); */
+          background-color: white;
+          color: rgb(150, 21, 21);
+      }
+
+  .navbar .dropdown-menu.fade-down {/*comment complete this when slide down will use*/
+      top: 80%;
+      transform: rotateX(-75deg);
+      transform-origin: 0% 0%;
+  }
+
+  .navbar .dropdown-menu.fade-up {/*comment complete this when slide down will use*/
+      top: 180%;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+      transition: .3s;
+      opacity: 1;
+      visibility: visible;
+      top: 100%;
+      transform: rotateX(0deg);/*comment this when slide down will use*/
+      /* transform: translateY(0); Adjust the dropping effect *//*use when slide down use*/
+  }
+}
+
+
+/*for Menu Ends*/
+
+/*lef menu*/
+
+
+.leftmenu a{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  color:rgb(126, 122, 122);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.leftmenu a:hover{
+  color:rgb(73, 73, 73);
+}
+
+.h-menu{
+  background-color: #3F51B5;
+}
+.h-menu a{
+  font-family: 'Times New Roman', Times, serif; font-size: 14px;
+}
+.h-menu a:hover{
+  background-color: #2c3b8b;
+}
+
+.mytab td{
+  padding: 15px;
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+
+

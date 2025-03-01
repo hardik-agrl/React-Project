@@ -9,23 +9,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function NavBar(){
-    useEffect(() => {
-    feather.replace();
-    }, []);
+    // useEffect(() => {
+    // feather.replace();
+    // }, []);
     
-    <MdSearch />
     return(
         <>
         
         <div className="navbar-custom d-flex flex-row">
             <div className="container-fluid">
-                <ul className="list-unstyled topnav-menu float-right mb-0">
-
+                
                     <li className="d-none d-lg-block">
                         <form className="app-search">
                             <div className="app-search-box dropdown">
                                 <div className="input-group">
                                     <input type="search" className="form-control" placeholder="Search..." id="top-search"/>
+                                    <MdSearch />
                                     <div className="input-group-append">
                                         <button className="btn" type="submit">
                                             <i className="fe-search"></i>
@@ -220,7 +219,7 @@ function NavBar(){
 
                     
 
-                </ul>
+                
 
                 <div className="logo-box">
                     <a href="/Home/Index" className="logo logo-dark text-center">

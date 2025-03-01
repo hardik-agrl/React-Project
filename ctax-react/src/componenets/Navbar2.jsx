@@ -7,21 +7,24 @@ import { Fullscreen, Minimize } from "lucide-react";
 export default function Navbar2(){
     const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
-      setIsFullscreen(false);
-    }
-  };
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().then(() => {
+            setIsFullscreen(true);
+          }).catch(err => console.log(err));
+        } else {
+          document.exitFullscreen().then(() => {
+            setIsFullscreen(false);
+          }).catch(err => console.log(err));
+        }
+      };
+      
     return(
         <>
-         <div className=' className="p-3 mb-2 bg-primary text-white d-flex align-items-center justify-content-around'>
+         <div className="p-1 mb-2 bg-primary text-white d-flex align-items-center justify-content-around">
                 <div className="logo">
                     <h3>CTax</h3>
-                    <img src="" alt="   " />
+                    {/* <img src="" alt="   " /> */}
                 </div>
                 <div className="hamburger">
                 <div className="contianer-fluid">
@@ -34,7 +37,7 @@ export default function Navbar2(){
                 </div>
                 <div className="minimenu">
                     <a className="  text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Create New</a>
-                    <ul className='dropdown-menu'>
+                    <ul className='dropdown-menu dropdown-menu-end' style={{ listStyle: "none", padding: 0, margin: 0 }}>
                         <li><a className="dropdown-item" href="#">New Projects</a></li>
                         <li><a className="dropdown-item" href="#">Create Users</a></li>
                         <li><a className="dropdown-item" href="#">Revenue Report</a></li>
@@ -43,53 +46,53 @@ export default function Navbar2(){
                         </ul>
                 </div>
                 <div className="mainmenu">
-                    <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown'>Mega Menu</a>
+                    <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>Mega Menu</a>
                     <div className='dropdown-menu '>
 
                     
-                    <div className="megaMenuContainer  d-flex position-absolute top-50 start-0  ">
+                    <div className="megaMenuContainer  d-flex position-absolute top-50 start-0  bg-body-secondary ">
                         <div className="ui p-4 g-col-3">
                             <h4 >UI Components</h4>
-                            <ul >
+                            <ul  style={{ listStyle: "none", padding: 0, margin: 0 }}>
                                 
                                 <li><a className="dropdown-item" href="#">Widgets</a></li>
-                                <li>Nestable List</li>
-                                <li>Range Sliders</li>
-                                <li>Masonry Items</li>
-                                <li>Sweet Alerts</li>
-                                <li>Treeview Page</li>
-                                <li>Tour Page</li>
+                                <li><a className="dropdown-item" href="#">Nestable List</a></li>
+                                <li><a className="dropdown-item" href="#">Range Sliders</a></li>
+                                <li><a className="dropdown-item" href="#">Masonry Items</a></li>
+                                <li><a className="dropdown-item" href="#">Sweet Alerts</a></li>
+                                <li><a className="dropdown-item" href="#">Treeview Page</a></li>
+                                <li><a className="dropdown-item" href="#">Tour Page</a></li>
                             </ul>
                         </div>
                         <div className="applications p-4 g-col-3">
                             <h2>Applications</h2>
-                            <ul>
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
 
-                            <li>eCommerce Pages</li>
-                            <li>CRM Pages</li>
-                            <li>Email</li>
-                            <li>Calender</li>
-                            <li>Team Contacts</li>
-                            <li>Task Board</li>
-                            <li>Email Templates</li>
+                            <li><a className="dropdown-item" href="#">eCommerce Pages</a></li>
+                            <li><a className="dropdown-item" href="#">CRM Pages</a></li>
+                            <li><a className="dropdown-item" href="#">Email</a></li>
+                            <li><a className="dropdown-item" href="#">Calender</a></li>
+                            <li><a className="dropdown-item" href="#">Team Contacts</a></li>
+                            <li><a className="dropdown-item" href="#">Task Board</a></li>
+                            <li><a className="dropdown-item" href="#">Email Templates</a></li>
                             </ul>
                         </div>
                         <div className="extra p-4 g-col-3">
                                 <h2>Extra Pages</h2>
-                            <ul>
-                                <li>Left Sidebar with User</li>
-                                <li>Menu Collapsed</li>
-                                <li>Small left Sidebar</li>
-                                <li>New Header Style</li>
-                                <li>Search Result</li>
-                                <li>Gallery Pages</li>
-                                <li>Maintainence & Coming Soon</li>
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                                <li><a className="dropdown-item" href="#">Left Sidebar with User</a></li>
+                                <li><a className="dropdown-item" href="#">Menu Collapsed</a></li>
+                                <li><a className="dropdown-item" href="#">Small left Sidebar</a></li>
+                                <li><a className="dropdown-item" href="#">New Header Style</a></li>
+                                <li><a className="dropdown-item" href="#">Search Result</a></li>
+                                <li><a className="dropdown-item" href="#">Gallery Pages</a></li>
+                                <li><a className="dropdown-item" href="#">Maintainence & Coming Soon</a></li>
                             </ul>
                         </div>
                         <div className="discount p-4 g-col-3">
-                            <h2>Special Discount Sale!</h2>
-                            <h3>Save up to 70% off.</h3>
-                            <button className="download">Download Now</button>
+                            <h3>Special Discount Sale!</h3>
+                            <h4>Save up to 70% off.</h4>
+                            <button className="download btn btn-success">Download Now</button>
                         </div>
                     </div>
                     </div>
@@ -111,7 +114,10 @@ export default function Navbar2(){
                 <div className="icon">
 
                     <div className="minimenu">
-                    <a className="text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Bell Icon</a>
+                    <a className="text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         
+                         <i class="bi bi-bell"></i>
+                         </a>
                     <ul className='dropdown-menu'>
                         <li><a className="dropdown-item" href="#">Notification 1</a></li>
                         <li><a className="dropdown-item" href="#">Notification</a></li>
@@ -124,9 +130,12 @@ export default function Navbar2(){
                 <div className="profile">
                     
                     <img src="" alt="" />
-                    <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown'>Demo</a>
+                    <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown'>
+                        
+                        <i class="bi bi-person-circle"></i>
+                        </a>
                     <ul className='dropdown-menu'>
-                        <p>Welcome</p>
+                    <h4 className='p-2'>Welcome</h4>
                         <li><a className='dropdown-item' href='#'>My account </a></li>
                         <li><a className='dropdown-item' href='#'>Log Out </a></li>
                         

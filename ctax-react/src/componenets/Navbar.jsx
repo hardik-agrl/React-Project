@@ -1,15 +1,15 @@
-// Navbar.js
+
 import React from 'react';
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        {/* Logo / Brand */}
+        
         <a className="navbar-brand" href="/Home/Index">
           CTax
         </a>
-        {/* Toggler for Mobile */}
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -21,10 +21,10 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        {/* Collapsible Content */}
+        
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto">
-            {/* Dropdown: Create New */}
+            
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -67,7 +67,7 @@ function Navbar() {
                 </li>
               </ul>
             </li>
-            {/* Dropdown: Mega Menu */}
+            
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -79,37 +79,13 @@ function Navbar() {
               >
                 Mega Menu
               </a>
-              {/* <ul className="dropdown-menu" aria-labelledby="megaMenuDropdown">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action 1
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action 2
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action 3
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another Action
-                  </a>
-                </li>
-              </ul> */}
+              
               <div
                   className="dropdown-menu mega-menu p-4"
                   aria-labelledby="megaMenuDropdown"
                 >
                   <div className="row">
-                    {/* UI Components Column */}
+                    
                     <div className="col-md-3">
                       <h5>UI Components</h5>
                       <ul className="list-unstyled">
@@ -123,7 +99,7 @@ function Navbar() {
                       </ul>
                     </div>
 
-                    {/* Applications Column */}
+                    
                     <div className="col-md-3">
                       <h5>Applications</h5>
                       <ul className="list-unstyled">
@@ -137,7 +113,7 @@ function Navbar() {
                       </ul>
                     </div>
 
-                    {/* Extra Pages Column */}
+                    
                     <div className="col-md-3">
                       <h5>Extra Pages</h5>
                       <ul className="list-unstyled">
@@ -151,7 +127,7 @@ function Navbar() {
                       </ul>
                     </div>
 
-                    {/* Special Discount Column */}
+                    
                     <div className="col-md-3">
                       <h5>Special Discount Sale!</h5>
                       <p>Save up to 70% off.</p>
@@ -161,7 +137,7 @@ function Navbar() {
                 </div>
             </li>
           </ul>
-          {/* Right Side: User Profile */}
+          
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <a className="nav-link" href="#">

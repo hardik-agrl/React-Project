@@ -1,0 +1,232 @@
+import React,{useState} from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Fullscreen, Minimize } from "lucide-react"; 
+
+
+export default function Navbar2(){
+    const [isFullscreen, setIsFullscreen] = useState(false);
+
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().then(() => {
+            setIsFullscreen(true);
+          }).catch(err => console.log(err));
+        } else {
+          document.exitFullscreen().then(() => {
+            setIsFullscreen(false);
+          }).catch(err => console.log(err));
+        }
+      };
+      
+    return(
+        <>
+         <div className="p-1 mb-2 bg-primary text-white d-flex align-items-center justify-content-around">
+                <div className="logo">
+                    <h3>CTax</h3>
+                    {/* <img src="" alt="   " /> */}
+                </div>
+                <div className="hamburger">
+                <div className="contianer-fluid">
+
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                </div>
+  
+                </div>
+                <div className="minimenu">
+                    <a className="  text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Create New</a>
+                    <ul className='dropdown-menu dropdown-menu-end' style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                        <li><a className="dropdown-item" href="#">New Projects</a></li>
+                        <li><a className="dropdown-item" href="#">Create Users</a></li>
+                        <li><a className="dropdown-item" href="#">Revenue Report</a></li>
+                        <li><a className="dropdown-item" href="#">Settings</a></li>
+                        <li><a className="dropdown-item" href="#">Help & Support</a></li>
+                        </ul>
+                </div>
+                <div className="mainmenu">
+                    <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>Mega Menu</a>
+                    <div className='dropdown-menu '>
+
+                    
+                    <div className="megaMenuContainer  d-flex position-absolute top-50 start-0  bg-body-secondary ">
+                        <div className="ui p-4 g-col-3">
+                            <h4 >UI Components</h4>
+                            <ul  style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                                
+                                <li><a className="dropdown-item" href="#">Widgets</a></li>
+                                <li><a className="dropdown-item" href="#">Nestable List</a></li>
+                                <li><a className="dropdown-item" href="#">Range Sliders</a></li>
+                                <li><a className="dropdown-item" href="#">Masonry Items</a></li>
+                                <li><a className="dropdown-item" href="#">Sweet Alerts</a></li>
+                                <li><a className="dropdown-item" href="#">Treeview Page</a></li>
+                                <li><a className="dropdown-item" href="#">Tour Page</a></li>
+                            </ul>
+                        </div>
+                        <div className="applications p-4 g-col-3">
+                            <h2>Applications</h2>
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+
+                            <li><a className="dropdown-item" href="#">eCommerce Pages</a></li>
+                            <li><a className="dropdown-item" href="#">CRM Pages</a></li>
+                            <li><a className="dropdown-item" href="#">Email</a></li>
+                            <li><a className="dropdown-item" href="#">Calender</a></li>
+                            <li><a className="dropdown-item" href="#">Team Contacts</a></li>
+                            <li><a className="dropdown-item" href="#">Task Board</a></li>
+                            <li><a className="dropdown-item" href="#">Email Templates</a></li>
+                            </ul>
+                        </div>
+                        <div className="extra p-4 g-col-3">
+                                <h2>Extra Pages</h2>
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                                <li><a className="dropdown-item" href="#">Left Sidebar with User</a></li>
+                                <li><a className="dropdown-item" href="#">Menu Collapsed</a></li>
+                                <li><a className="dropdown-item" href="#">Small left Sidebar</a></li>
+                                <li><a className="dropdown-item" href="#">New Header Style</a></li>
+                                <li><a className="dropdown-item" href="#">Search Result</a></li>
+                                <li><a className="dropdown-item" href="#">Gallery Pages</a></li>
+                                <li><a className="dropdown-item" href="#">Maintainence & Coming Soon</a></li>
+                            </ul>
+                        </div>
+                        <div className="discount p-4 g-col-3">
+                            <h3>Special Discount Sale!</h3>
+                            <h4>Save up to 70% off.</h4>
+                            <button className="download btn btn-success">Download Now</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className="searchbar">
+                    <div className="container-fluid">
+    <form className="d-flex" role="search">
+      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button className="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+                </div>
+                <div className="fullscreen">
+                <button onClick={toggleFullscreen} className="btn btn-light">
+                    {isFullscreen ? <Minimize size={20} /> : <Fullscreen size={20} />} 
+                </button>
+
+                </div>
+                <div className="icon">
+
+                    <div className="minimenu">
+                    <a className="text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Bell Icon</a>
+                    <ul className='dropdown-menu'>
+                    <li class="dropdown notification-list topbar-dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-bell noti-icon"></i>
+                    <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                    
+                    <div class="dropdown-item noti-title">
+                        <h5 class="m-0">
+                            <span class="float-right">
+                                <a href="" class="text-dark">
+                                    <small>Clear All</small>
+                                </a>
+                            </span>Notification
+                        </h5>
+                    </div>
+
+                    <div class="noti-scroll" data-simplebar>
+
+                        
+                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                            <div class="notify-icon">
+                                <img src="../assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" />
+                            </div>
+                            <p class="notify-details">Cristina Pride</p>
+                            <p class="text-muted mb-0 user-msg">
+                                <small>Hi, How are you? What about our next meeting</small>
+                            </p>
+                        </a>
+
+                        
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-primary">
+                                <i class="mdi mdi-comment-account-outline"></i>
+                            </div>
+                            <p class="notify-details">
+                                Caleb Flakelar commented on Admin
+                                <small class="text-muted">1 min ago</small>
+                            </p>
+                        </a>
+
+                        
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon">
+                                <img src="../assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" />
+                            </div>
+                            <p class="notify-details">Karen Robinson</p>
+                            <p class="text-muted mb-0 user-msg">
+                                <small>Wow ! this admin looks good and awesome design</small>
+                            </p>
+                        </a>
+
+                        
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-account-plus"></i>
+                            </div>
+                            <p class="notify-details">
+                                New user registered.
+                                <small class="text-muted">5 hours ago</small>
+                            </p>
+                        </a>
+
+                        
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-info">
+                                <i class="mdi mdi-comment-account-outline"></i>
+                            </div>
+                            <p class="notify-details">
+                                Caleb Flakelar commented on Admin
+                                <small class="text-muted">4 days ago</small>
+                            </p>
+                        </a>
+
+                        
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-secondary">
+                                <i class="mdi mdi-heart"></i>
+                            </div>
+                            <p class="notify-details">
+                                Carlos Crouch liked
+                                <b>Admin</b>
+                                <small class="text-muted">13 days ago</small>
+                            </p>
+                        </a>
+                    </div>
+
+                                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                        View all
+                        <i class="fe-arrow-right"></i>
+                    </a>
+
+                </div>
+            </li>
+                        </ul>
+                </div>
+
+                </div>
+                <div className="profile">
+                    
+                    <img src="" alt="" />
+                    <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown'>Demo</a>
+                    <ul className='dropdown-menu'>
+                    <h4 className='p-2'>Welcome</h4>
+                        <li><a className='dropdown-item' href='#'>My account </a></li>
+                        <li><a className='dropdown-item' href='#'>Log Out </a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </>
+    )
+}

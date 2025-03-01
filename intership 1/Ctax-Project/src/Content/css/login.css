@@ -1,0 +1,59 @@
+﻿.mytext input[type="text"] {
+    border: 0px;
+    border-bottom: 1px solid rgb(207, 206, 206);
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border-radius: 0px;
+    margin-bottom: 20px;
+}
+
+.mytext input[type="password"] {
+    border: 0px;
+    border-bottom: 1px solid rgb(207, 206, 206);
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border-radius: 0px;
+}
+
+.btncancel {
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(255, 159, 1);
+    box-shadow: 1px 1px 2px rgb(119, 116, 116);
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+    .btncancel:hover {
+        background-color: rgb(231, 145, 5);
+        color: white;
+    }
+
+.btnsign {
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(250, 100, 27);
+    box-shadow: 1px 1px 2px rgb(119, 116, 116);
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+    .btnsign:hover {
+        background-color: rgb(226, 87, 17);
+        color: white;
+    }
+
+.mytext a {
+    text-decoration: none;
+    color: gray;
+    font-size: small;
+    font-family: Arial;
+}
