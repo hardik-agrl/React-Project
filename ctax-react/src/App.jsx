@@ -11,10 +11,11 @@ import Navbar from "./componenets/Navbar";
 // import Navbar3 from "./componenets/Navbar3"
 import NavBar from "./Views/NavBar";
 import Navbar4 from './componenets/Navbar4'
+import LoginPage from "./Views/LoginPage";
 function App() {
   return (
     <BrowserRouter>
-      
+      <LoginPage/>
       <Navbar2 />
       {/* <Navbar2 /> */}
       
