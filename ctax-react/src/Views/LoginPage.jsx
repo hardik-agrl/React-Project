@@ -79,24 +79,24 @@ export default function AuthPage() {
         <h3 className="text-center mb-3">{isLogin ? "Login" : "Register"}</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label">Comapny Name</label>
             <input
               id="email"
-              type="email"
+              type="text"
               className="form-control"
-              placeholder="Enter your email"
+              placeholder="Enter your Company Name"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">Lisence Key</label>
             <input
               id="password"
               type="password"
               className="form-control"
-              placeholder="Enter your password"
+              placeholder="Enter your Lisence Key"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -104,12 +104,12 @@ export default function AuthPage() {
           </div>
           {!isLogin && (
             <div className="mb-3">
-              <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+              <label htmlFor="confirmPassword" className="form-label">Confirm Lisence Key</label>
               <input
                 id="confirmPassword"
                 type="password"
                 className="form-control"
-                placeholder="Confirm your password"
+                placeholder="Confirm your Lisence Key"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
