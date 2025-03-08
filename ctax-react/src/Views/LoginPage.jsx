@@ -11,7 +11,7 @@ export default function AuthPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in
+    
     const token = localStorage.getItem("token");
     if (token) {
       navigate("/");
@@ -34,7 +34,7 @@ export default function AuthPage() {
       const data = await response.json();
       alert(data.message);
       if (response.ok) {
-        setIsLogin(true); // Switch to login after successful registration
+        setIsLogin(true);  
       }
     } catch (error) {
       console.error("Registration failed:", error);
@@ -53,8 +53,7 @@ export default function AuthPage() {
       const data = await response.json();
       if (response.ok && data.token) {
         localStorage.setItem("token", data.token);
-        // alert("Login successful!");
-        navigate("/"); // Redirect to home
+        navigate("/"); 
       } else {
         alert(data.message);
       }
@@ -116,18 +115,7 @@ export default function AuthPage() {
               />
             </div>
           )}
-          {/* {isLogin && (
-            <div className="form-check mb-3">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="remember"
-                checked={remember}
-                onChange={() => setRemember(!remember)}
-              />
-              <label className="form-check-label" htmlFor="remember">Remember me</label>
-            </div>
-          )} */}
+          
           <button className="btn btn-primary w-100" type="submit">{isLogin ? "Login" : "Register"}</button>
         </form>
         <div className="text-center mt-3">

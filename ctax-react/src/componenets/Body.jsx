@@ -11,7 +11,7 @@ function Body() {
     <Routes>
 
 
-      <Route path="/" element={<OnlineConfig />} />  {/* Default route */}
+      <Route path="/" element={<OnlineConfig />} />
       <Route path="/importdata" element={<ImportData />} />
       <Route path="/offlineConfig" element={<OfflineConfig />} />
       <Route path="/importNavData" element={<ImportNavData />} />

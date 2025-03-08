@@ -17,15 +17,15 @@ import ProtectedRoute from "./componenets/ProtectedRoute";
 
 function Layout() {
   const location = useLocation();
-  const isAuthPage = location.pathname === "/auth"; // Check if the user is on the login page
+  const isAuthPage = location.pathname === "/auth";  
 
   return (
     <>
-      {!isAuthPage && <Navbar2 />} {/* Hide navbar on login/register */}
+      {!isAuthPage && <Navbar2 />} 
       <div className="min-vh-90">
         <div className="d-flex">
           {!isAuthPage && <LeftSideBar />}{" "}
-          {/* Hide sidebar on login/register */}
+          
           <Routes>
             <Route
               path="*"
@@ -39,7 +39,7 @@ function Layout() {
           </Routes>
         </div>
       </div>
-      {!isAuthPage && <Footer />} {/* Hide footer on login/register */}
+      {!isAuthPage && <Footer />}  
     </>
   );
 }

@@ -15,7 +15,9 @@ import {
   Headset,
   MessageSquareDot,
   CircleUserRound,
-  LogOut,UserCog,PartyPopper
+  LogOut,
+  UserCog,
+  PartyPopper,
 } from "lucide-react";
 
 export default function Navbar2() {
@@ -24,14 +26,13 @@ export default function Navbar2() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token); // Convert to boolean
+    setIsAuthenticated(!!token);
   }, []);
 
-  // Logout function
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token
-    setIsAuthenticated(false); // Update state
-    navigate("/auth", { replace: true }); // Redirect without refresh
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    navigate("/auth", { replace: true });
   };
 
   const [islogout, setIslogout] = useState("true");
@@ -57,10 +58,12 @@ export default function Navbar2() {
 
   return (
     <>
-      <div className="p-1 mb-2 text-white d-flex align-items-center justify-content-around" style={{backgroundColor:'#42a5f5'}}>
+      <div
+        className="p-1 mb-2 text-white d-flex align-items-center justify-content-around"
+        style={{ backgroundColor: "#42a5f5" }}
+      >
         <div className="logo">
           <h3>CTax</h3>
-          {/* <img src="" alt="   " /> */}
         </div>
         <div className="hamburger">
           <div className="contianer-fluid">
@@ -278,7 +281,11 @@ export default function Navbar2() {
           </div>
         </div>
         <div className="fullscreen">
-          <button onClick={toggleFullscreen} className="btn " style={{backgroundColor:'#42a5f5'}}>
+          <button
+            onClick={toggleFullscreen}
+            className="btn "
+            style={{ backgroundColor: "#42a5f5" }}
+          >
             {isFullscreen ? <Minimize /> : <Fullscreen />}
           </button>
         </div>
@@ -290,49 +297,44 @@ export default function Navbar2() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <BellRing />  Notifications
+              <BellRing /> Notifications
             </a>
             <ul className="dropdown-menu">
               <li>
                 <a className="dropdown-item" href="#">
-                  <MessageSquareDot />  Notification 1
+                  <MessageSquareDot /> Notification 1
                 </a>
               </li>
               <li>
                 <a className="dropdown-item" href="#">
-                  <MessageSquareDot />  Notification 2
+                  <MessageSquareDot /> Notification 2
                 </a>
               </li>
               <li>
                 <a className="dropdown-item" href="#">
-                  <MessageSquareDot />  Notification 3
+                  <MessageSquareDot /> Notification 3
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="profile">
-          {/* <img src="" alt="" /> */}
+        
           <a className="text-white btn" type="button" data-bs-toggle="dropdown">
-            <CircleUserRound />  Profile
+            <CircleUserRound /> Profile
           </a>
           <ul className="dropdown-menu">
-            <h4 className="p-2">  Welcome  </h4>
+            <h4 className="p-2"> Welcome </h4>
             <li>
               <a className="dropdown-item" href="#">
-              <UserCog/> My account{" "}
+                <UserCog /> My account{" "}
               </a>
             </li>
-            {/* <li>
-              <a className="dropdown-item" href="#">
-                Log Out{" "}
-              </a>
-            </li> */}
           </ul>
         </div>
         <div className="logout">
           <button className="btn btn-danger" onClick={handleLogout}>
-           <LogOut/> Log Out
+            <LogOut /> Log Out
           </button>
         </div>
       </div>

@@ -11,45 +11,7 @@ function LeftSideBar() {
         <div className="h-100" data-simplebar>
           
 
-          {/* <div id="sidebar">
-            <div id="side" >
-              <h3 className="menu">Navigation</h3>
-
-
-              <div>
-               <button id='online' className='w-75 py-2 my-2 btn btn-outline-primary ' >
-                <Bolt/>
-                  <Link to="/" style={{textDecoration:'none' ,color:'inherit'}}> Online Config </Link></button>
-                
-              </div>
-              <div>
-              <button id='import' className='w-75 py-2 my-2 btn btn-outline-primary'>
-                  <FolderInput/>
-                  <Link to="/importdata" style={{textDecoration:'none' ,color:'inherit'}}> Import Data</Link></button>
-                
-              </div>
-              
-              <div>
-                
-                  <button  id='offline' className='w-75 py-2 my-2 btn btn-outline-primary '>
-                  <Cog/>
-                 <Link to="/offlineConfig" style={{textDecoration:'none' ,color:'inherit'}}>  Offline Config</Link></button>
-                 
-
-                
-              </div>
-              <div>
-                <button id='nav' className='w-75 py-2 my-2 btn btn-outline-primary'>
-                <FolderUp/>  
-              <Link to="/ImportNavData" style={{textDecoration:'none' ,color:'inherit'}}>  Import Nav Data</Link></button>
-                  
-
-              </div>
-            </div>
-            <Outlet />
-
-          </div> */}
-
+         
           <div id="sidebar">
       <div id="side">
         <h3 className="menu">Navigation</h3>
