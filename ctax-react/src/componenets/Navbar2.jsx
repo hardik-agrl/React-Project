@@ -1,19 +1,29 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Fullscreen, Minimize } from "lucide-react"; 
+import { useNavigate } from "react-router-dom";
 
 
 export default function Navbar2(){
+    const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const handleLogout = () => {
-        localStorage.removeItem("token"); // Remove authentication token
-        navigate("/auth"); // Redirect to login page
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsAuthenticated(!!token); // Convert to boolean
+      }, []);
+    
+      // Logout function
+      const handleLogout = () => {
+        localStorage.removeItem("token"); // Remove token
+        setIsAuthenticated(false); // Update state
+        navigate("/auth", { replace: true }); // Redirect without refresh
       };
 
 
 
-
+    const [islogout,setIslogout] = useState('true');
     const [isFullscreen, setIsFullscreen] = useState(false);
 
     const toggleFullscreen = () => {
@@ -153,7 +163,7 @@ export default function Navbar2(){
                 </div>
                 <div className="logout">
 
-                <button className="dropdown-item" onClick={handleLogout}>Log Out</button>
+                <button className="btn btn-danger" onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
         </>
