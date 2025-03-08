@@ -53,7 +53,7 @@ export default function AuthPage() {
       const data = await response.json();
       if (response.ok && data.token) {
         localStorage.setItem("token", data.token);
-        alert("Login successful!");
+        // alert("Login successful!");
         navigate("/"); // Redirect to home
       } else {
         alert(data.message);
@@ -74,7 +74,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center bg-light">
+    <div className="d-flex vh-100 justify-content-center align-items-center bg-light w-100">
       <div className="card p-4 shadow-sm" style={{ width: "22rem" }}>
         <h3 className="text-center mb-3">{isLogin ? "Login" : "Register"}</h3>
         <form onSubmit={handleSubmit}>
@@ -116,7 +116,7 @@ export default function AuthPage() {
               />
             </div>
           )}
-          {isLogin && (
+          {/* {isLogin && (
             <div className="form-check mb-3">
               <input
                 className="form-check-input"
@@ -127,7 +127,7 @@ export default function AuthPage() {
               />
               <label className="form-check-label" htmlFor="remember">Remember me</label>
             </div>
-          )}
+          )} */}
           <button className="btn btn-primary w-100" type="submit">{isLogin ? "Login" : "Register"}</button>
         </form>
         <div className="text-center mt-3">
