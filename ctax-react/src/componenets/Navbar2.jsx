@@ -5,6 +5,15 @@ import { Fullscreen, Minimize } from "lucide-react";
 
 
 export default function Navbar2(){
+
+    const handleLogout = () => {
+        localStorage.removeItem("token"); // Remove authentication token
+        navigate("/auth"); // Redirect to login page
+      };
+
+
+
+
     const [isFullscreen, setIsFullscreen] = useState(false);
 
     const toggleFullscreen = () => {
@@ -116,7 +125,7 @@ export default function Navbar2(){
                     <div className="minimenu">
                     <a className="text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                          
-                         <i class="bi bi-bell"></i>
+                         <i className="bi bi-bell"></i>
                          </a>
                     <ul className='dropdown-menu'>
                         <li><a className="dropdown-item" href="#">Notification 1</a></li>
@@ -129,10 +138,10 @@ export default function Navbar2(){
                 </div>
                 <div className="profile">
                     
-                    <img src="" alt="" />
+                    {/* <img src="" alt="" /> */}
                     <a className='text-white dropdown-toggle' type='button' data-bs-toggle='dropdown'>
                         
-                        <i class="bi bi-person-circle"></i>
+                        <i className="bi bi-person-circle"></i>
                         </a>
                     <ul className='dropdown-menu'>
                     <h4 className='p-2'>Welcome</h4>
@@ -140,6 +149,11 @@ export default function Navbar2(){
                         <li><a className='dropdown-item' href='#'>Log Out </a></li>
                         
                     </ul>
+
+                </div>
+                <div className="logout">
+
+                <button className="dropdown-item" onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
         </>

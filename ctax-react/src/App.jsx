@@ -1,4 +1,9 @@
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -7,26 +12,43 @@ import Navbar2 from "./componenets/navbar2";
 import LeftSideBar from "./Views/LeftSideBar";
 import Footer from "./Views/Footer";
 import Body from "./componenets/Body";
-import Navbar from "./componenets/Navbar";
-// import Navbar3 from "./componenets/Navbar3"
-import NavBar from "./Views/NavBar";
-import Navbar4 from './componenets/Navbar4'
 import LoginPage from "./Views/LoginPage";
-function App() {
+import ProtectedRoute from "./componenets/ProtectedRoute";
+
+function Layout() {
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/auth"; // Check if the user is on the login page
+
   return (
-    <BrowserRouter>
-      <LoginPage/>
-      <Navbar2 />
-      {/* <Navbar2 /> */}
-      
+    <>
+      {!isAuthPage && <Navbar2 />} {/* Hide navbar on login/register */}
       <div className="min-vh-90">
         <div className="d-flex">
-          <LeftSideBar />
-          <Body />
+          {!isAuthPage && <LeftSideBar />}{" "}
+          {/* Hide sidebar on login/register */}
+          <Routes>
+            <Route
+              path="*"
+              element={
+                <ProtectedRoute>
+                  <Body />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/auth" element={<LoginPage />} />
+          </Routes>
         </div>
       </div>
-      <Footer />
-    </BrowserRouter>
+      {!isAuthPage && <Footer />} {/* Hide footer on login/register */}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
   );
 }
 

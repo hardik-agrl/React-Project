@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    "both" : "concurrently \"cd ctax-react && npm run dev\" \"nodemon backend-ctax/index.js\""
+  }
+}
