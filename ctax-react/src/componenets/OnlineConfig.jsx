@@ -3,6 +3,10 @@ import axios from 'axios';
 import { Form, Button, Row, Col, Card, Badge } from 'react-bootstrap';
 
 const OnlineConfig = () => {
+
+  // const [data, setData] = useState([]);
+
+  
   const [configType, setConfigType] = useState('sas');
   const [sasConfig, setSasConfig] = useState({
     clientId: '',
@@ -26,43 +30,55 @@ const OnlineConfig = () => {
     apiName: '',
   });
 
-  useEffect(() => {
-    bindSummary(configType);
-  }, [configType]);
+  
 
   const bindSummary = async (type) => {
     try {
-      const response = await axios.get(`/home/GetCtax_ConfigurationSummary?config_type=${type}`);
-      const data = response.data;
+      const response = await axios.get("http://localhost:5000/api/data");
+      const fetchedData = response.data;
+  
+      if (!fetchedData.length) {
+        console.error("No data found in the database");
+        return;
+      }
+  
+      const data = fetchedData[0]; 
+      
+      console.log("Fetched Data:", data); 
 
-      if (type === 'SQL_API') {
+      if (type === "SQL_API") {
         setSqlConfig({
-          username: data.USER_NAME,
-          password: data.PASSWORD,
-          apiName: data.API_NAME,
+          username: data.username, 
+          password: data.password,
+          apiName: data.apiName,
         });
-      } else if (type === 'SAS_AZURE') {
-        setSasConfig({
-          ...sasConfig,
-          clientId: data.CLIENT_ID,
-          clientSecret: data.CLIENT_SECRET,
-          username: data.USER_NAME,
-          password: data.PASSWORD,
-          organizationId: data.ORGANIZATION_ID,
-          secretId: data.SECRAT_ID,
-          scope: data.SCOPE,
-          accessTokenUrl: data.ACCESS_TOKEN_URL,
-          apiName: data.API_NAME,
-          apiNameGlEntries: data.API_NAME_GLENTRIES,
-          customerKey: data.CUSTOMER_KEY,
-          companyName: data.COMPANY_NAME,
-          licenceValidationStatus: data.LICENCE_VALIDATION_STATUS,
-        });
+      } else if (type === "sas") {
+        setSasConfig((prevSasConfig) => ({
+          ...prevSasConfig,
+          clientId: data.clientId, 
+          clientSecret: data.clientSecret,
+          username: data.username,
+          password: data.password,
+          organizationId: data.organizationId,
+          secretId: data.secretId,
+          scope: data.scope,
+          accessTokenUrl: data.accessTokenUrl,
+          apiName: data.apiName,
+          apiNameGlEntries: data.apiNameGlEntries,
+          customerKey: data.customerKey,
+          companyName: data.companyName,
+          licenceValidationStatus: "Valid", 
+        }));
       }
     } catch (error) {
-      console.error('Error fetching configuration summary:', error);
+      console.error("Error fetching configuration summary:", error);
     }
   };
+  
+
+  useEffect(() => {
+    bindSummary(configType);
+  }, [configType]);
 
   const handleConfigTypeChange = (e) => {
     setConfigType(e.target.value);
@@ -132,7 +148,7 @@ const OnlineConfig = () => {
         <Card>
           <Card.Header>
             <Row>
-              <Col sm={11}>
+              <Col sm={12}>
                 <Form.Check
                   type="radio"
                   label="SASS Azure"
@@ -143,12 +159,12 @@ const OnlineConfig = () => {
                   inline
                 />
               </Col>
-              <Col sm={1}>
+              {/* <Col sm={1}>
                 <a href="#">
                   <i className="fa fa-info" data-toggle="tooltip" data-html="true"
-                    title="<div id='my-tip' className='tip-content hidden'><h2 className='text-white'>Auth 2.0</h2><p>Client ID, Client Secret, Scope, Access Token URL, Api Name is Mandatory</p></div>"></i>
+                    ><div id='my-tip' className='tip-content hidden'><h2 className='text-white'>Auth 2.0</h2><p>Client ID, Client Secret, Scope, Access Token URL, Api Name is Mandatory</p></div></i>
                 </a>
-              </Col>
+              </Col> */}
             </Row>
           </Card.Header>
           <Card.Body>

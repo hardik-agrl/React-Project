@@ -17,43 +17,43 @@ function LeftSideBar() {
         <h3 className="menu">Navigation</h3>
 
         <div>
-          <button
+          <Link to="/"
             className={`w-75 py-2 my-2 btn btn-outline-primary ${activeButton === "online" ? "active" : ""}`}
             onClick={() => setActiveButton("online")}
           >
             <Bolt />
-            <Link to="/" className="nav-link"> Online Config </Link>
-          </button>
+            <div className="nav-link"> Online Config </div>
+          </Link>
         </div>
 
         <div>
-          <button
+          <Link to="/importdata"
             className={`w-75 py-2 my-2 btn btn-outline-primary ${activeButton === "import" ? "active" : ""}`}
             onClick={() => setActiveButton("import")}
           >
             <FolderInput />
-            <Link to="/importdata" className="nav-link"> Import Data </Link>
-          </button>
+            <div className="nav-link"> Import Data </div>
+          </Link>
         </div>
 
         <div>
-          <button
+          <Link to="/offlineConfig"
             className={`w-75 py-2 my-2 btn btn-outline-primary ${activeButton === "offline" ? "active" : ""}`}
             onClick={() => setActiveButton("offline")}
           >
             <Cog />
-            <Link to="/offlineConfig" className="nav-link"> Offline Config </Link>
-          </button>
+            <div className="nav-link"> Offline Config </div>
+          </Link>
         </div>
 
         <div>
-          <button
+          <Link to="/ImportNavData"
             className={`w-75 py-2 my-2 btn btn-outline-primary ${activeButton === "nav" ? "active" : ""}`}
             onClick={() => setActiveButton("nav")}
           >
             <FolderUp />
-            <Link to="/ImportNavData" className="nav-link"> Import Nav Data </Link>
-          </button>
+            <div className="nav-link"> Import Nav Data </div>
+          </Link>
         </div>
       </div>
       
