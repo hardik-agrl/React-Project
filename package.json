@@ -3,6 +3,8 @@
     "concurrently": "^9.1.2"
   },
   "scripts": {
-    "both" : "concurrently \"cd ctax-react && npm run dev\" \"nodemon backend-ctax/index.js\""
+    "frontend": "cd ctax-react && npm run dev",
+    "backend": "cd backend-ctax && npm run dev",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
   }
 }
