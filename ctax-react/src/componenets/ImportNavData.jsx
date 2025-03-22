@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 export default function ImportNavData() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    // useEffect(() => {
+    //     handleImport();
+    //   }, [setLoading]);
+
     const handleImport = async () => {
         setLoading(true);
         try {
-            const response = await fetch("/Home/GetNavImportTrailBalaince");
-            const result = await response.json();
+            const response = await axios.get("http://localhost:5000/api/offlineImp");
+            const result =  response.data;
+            console.log(result)
             setData(result);
+            
         } catch (error) {
             console.error("Error fetching data:", error);
             setData([]);
@@ -50,9 +57,9 @@ export default function ImportNavData() {
                                 {data.length > 0 ? (
                                     data.map((item, index) => (
                                         <tr key={index}>
-                                            <td>{item.No}</td>
-                                            <td>{item.Name}</td>
-                                            <td>{item.Balance}</td>
+                                            <td>{item.no}</td>
+                                            <td>{item.name}</td>
+                                            <td>{item.balance}</td>
                                         </tr>
                                     ))
                                 ) : (
@@ -60,6 +67,7 @@ export default function ImportNavData() {
                                         <td colSpan="3" className="text-center">No data available</td>
                                     </tr>
                                 )}
+                                
                             </tbody>
                         </table>
                     </div>

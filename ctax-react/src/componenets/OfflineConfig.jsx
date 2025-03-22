@@ -16,16 +16,17 @@ export default function OfflineConfig() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("/home/GetOfflineConfingMasterData", {
-        params: { config_type: configType, license_key: licenseKey },
-      });
+      const response = await axios.get("http://localhost:5000/api/offline");
       const data = response.data;
       if (data.length > 0) {
         const itm = data[0];
-        setUserId(itm.USER_ID || "");
-        setPassword(itm.PASSWORD || "");
-        setTrialBalanceApi(itm.TRAIL_BALANCE_API || "");
-        setValidationStatus(itm.LICENCE_VALIDATION_STATUS || "Invalid");
+        setCompanyName(itm.companyName || "");
+        setLicenseKey(itm.lisenceKey || "");
+        setUserId(itm.userId || "");
+        setPassword(itm.password || "");
+        setTrialBalanceApi(itm.balanceApi || "");
+        setValidationStatus("Valid");
+        console.log(itm);
       } else {
         setUserId(""), setPassword(""), setTrialBalanceApi(""), setValidationStatus("Invalid");
       }

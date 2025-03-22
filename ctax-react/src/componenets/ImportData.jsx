@@ -14,34 +14,39 @@ export default function ImportData() {
     setLoading(true);
     setDataSummary([]);
     try {
-      const response = await axios.get("/home/GetCtax_ImportData", {
-        params: {
-          from_date: fromDate.toISOString().split("T")[0],
-          to_date: toDate.toISOString().split("T")[0],
-        },
-      });
+      const response = await axios.get("http://localhost:5000/api/onlineImp"
+        //   , {
+          //   params: {
+            //     from_date: fromDate.toISOString().split("T")[0],
+            //     to_date: toDate.toISOString().split("T")[0],
+            //   },
+            // }
+          );
+          {console.log(fromDate.toISOString())}
+          {console.log(fromDate.toISOString().split("T")[0])}
       setDataSummary(response.data);
+      console.log(response.data[0])
     } catch (error) {
       console.error("Error fetching data", error);
     }
     setLoading(false);
   };
 
-  const handleImportDataToCtax = async () => {
-    setLoadingCtax(true);
-    try {
-      const response = await axios.get("/home/BCImportDataToCTax", {
-        params: {
-          from_date: fromDate.toISOString().split("T")[0],
-          to_date: toDate.toISOString().split("T")[0],
-        },
-      });
-      alert(response.data);
-    } catch (error) {
-      console.error("Error importing to Ctax", error);
-    }
-    setLoadingCtax(false);
-  };
+  // const handleImportDataToCtax = async () => {
+  //   setLoadingCtax(true);
+  //   try {
+  //     const response = await axios.get("/home/BCImportDataToCTax", {
+  //       params: {
+  //         from_date: fromDate.toISOString().split("T")[0],
+  //         to_date: toDate.toISOString().split("T")[0],
+  //       },
+  //     });
+  //     alert(response.data);
+  //   } catch (error) {
+  //     console.error("Error importing to Ctax", error);
+  //   }
+  //   setLoadingCtax(false);
+  // };
 
   return (
     <div className="row card-box">
@@ -79,7 +84,7 @@ export default function ImportData() {
       <div className="col-sm-2">
         <button
           className="btn btn-danger mt-3"
-          onClick={handleImportDataToCtax}
+          onClick={handleImportData}
           disabled={loadingCtax}
         >
           {loadingCtax ? "Loading..." : "Import To Ctax"}
@@ -102,13 +107,13 @@ export default function ImportData() {
             {dataSummary.length > 0 ? (
               dataSummary.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.G_L_Account_No}</td>
-                  <td>{item.G_L_Account_Name}</td>
-                  <td>{item.Amount}</td>
-                  <td>{item.Debit_Amount}</td>
-                  <td>{item.Credit_Amount}</td>
-                  <td>{item.Income_Balance}</td>
-                  <td>{item.Account_Category}</td>
+                  <td>{item.glNo}</td>
+                  <td>{item.glName}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.debt}</td>
+                  <td>{item.credit}</td>
+                  <td>{item.accountType}</td>
+                  <td>{item.amountCategory}</td>
                 </tr>
               ))
             ) : (
