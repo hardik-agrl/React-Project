@@ -4,12 +4,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import Data from "./models/Data.js";
+// import Data from "./models/Data.js";
 import OnlineImport from "./models/OnlineImport.js";
 import OfflineData from "./models/OfflineData.js";
 import OfflineImport from "./models/OfflineImport.js";
 
-import dataRoutes from "./routes/dataRoutes.js"; // Import routes
+import onlineRoute from "./routes/onlineRoute.js"; // Import routes
 import onlineImpRoute from "./routes/onlineImpRoute.js"; // Import routes
 import offlineRoute from "./routes/offlineRoute.js"; // Import routes
 import offlineImpRoute from "./routes/offlineImpRoute.js"; // Import routes
@@ -21,7 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/api", dataRoutes); // Register API routes
+app.use("/api", onlineRoute); // Register API routes
 app.use("/api", onlineImpRoute); // Register API routes
 app.use("/api", offlineRoute); // Register API routes
 app.use("/api", offlineImpRoute); // Register API routes

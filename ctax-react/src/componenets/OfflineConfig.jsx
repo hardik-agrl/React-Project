@@ -8,7 +8,7 @@ export default function OfflineConfig() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [trialBalanceApi, setTrialBalanceApi] = useState("");
-  const [validationStatus, setValidationStatus] = useState("Invalid");
+  const [validationStatus, setValidationStatus] = useState("License Validated");
 
   useEffect(() => {
     fetchData();
@@ -25,7 +25,7 @@ export default function OfflineConfig() {
         setUserId(itm.userId || "");
         setPassword(itm.password || "");
         setTrialBalanceApi(itm.balanceApi || "");
-        setValidationStatus("Valid");
+        setValidationStatus("License Validated");
         console.log(itm);
       } else {
         setUserId(""), setPassword(""), setTrialBalanceApi(""), setValidationStatus("Invalid");
@@ -77,7 +77,7 @@ export default function OfflineConfig() {
             <label className="col-3 col-form-label">Config Type</label>
             <div className="col-9">
               {["Navision", "Oracle", "Tally"].map((type) => (
-                <label key={type} className="mr-3">
+                <label key={type} className="m-3">
                   <input
                     type="radio"
                     name="type_config"
@@ -118,7 +118,7 @@ export default function OfflineConfig() {
               />
               <div className="row">
                 <div className="col-sm-10 text-right">
-                  <label>Status: <span className={`badge ${validationStatus === "License Validated" ? "badge-success" : "badge-secondary"}`}>{validationStatus}</span></label>
+                  <label>Status: <span className={`badge ${validationStatus === "License Validated" ? "badge-success" : "badge-success"}`}>{validationStatus}</span></label>
                 </div>
                 <div className="col-sm-2 text-right">
                   <button type="button" className="btn btn-sm btn-danger mt-1" onClick={handleValidate}>Validate</button>

@@ -34,7 +34,7 @@ const OnlineConfig = () => {
 
   const bindSummary = async (type) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/data");
+      const response = await axios.get("http://localhost:5000/api/online");
       const fetchedData = response.data;
   
       if (!fetchedData.length) {

@@ -15,6 +15,6 @@ const dataSchema = new mongoose.Schema({
   customerKey: String
 });
 
-const Data = mongoose.model('Data', dataSchema);
+const OnlineData = mongoose.model('OnlineData', dataSchema);
 
-export default Data;
+export default OnlineData;
