@@ -4,7 +4,7 @@ import { Form, Button, Row, Col, Card, Badge } from 'react-bootstrap';
 
 const OnlineConfig = () => {
 
-  // const [data, setData] = useState([]);
+
 
   
   const [configType, setConfigType] = useState('sas');
@@ -92,20 +92,20 @@ const OnlineConfig = () => {
       user_name: sasConfig.username,
       password: sasConfig.password,
       organization_id: sasConfig.organizationId,
-      secrat_id: sasConfig.secretId,
+      secret_id: sasConfig.secretId,
       scope: sasConfig.scope,
       access_token_url: sasConfig.accessTokenUrl,
       api_name: sasConfig.apiName,
       api_name_gl_entries: sasConfig.apiNameGlEntries,
       company_name: sasConfig.companyName,
       customer_key: sasConfig.customerKey,
-      config_from_type: 'SAS_AZURE',
+      config_from_type: 'sas',
     };
 
     try {
-      const response = await axios.post('/Home/InsertCtax_ConfigurationForm', config);
+      const response = await axios.post('http://localhost:5000/api/InsertOnlineConfig', config);
       alert(response.data);
-      bindSummary('SAS_AZURE');
+      bindSummary('sas');
     } catch (error) {
       console.error('Error submitting SAS configuration:', error);
     }
@@ -130,16 +130,16 @@ const OnlineConfig = () => {
   };
 
   const handleValidateLicence = async () => {
-    try {
-      const response = await axios.post('/Home/InsertCtaxSassAzureValidate', {
-        id: sasConfig.config_from_id || 0,
-        licence_key: sasConfig.customerKey,
-      });
-      alert(response.data);
-      bindSummary('SAS_AZURE');
-    } catch (error) {
-      console.error('Error validating licence:', error);
-    }
+    // try {
+    //   const response = await axios.post('/Home/InsertCtaxSassAzureValidate', {
+    //     id: sasConfig.config_from_id || 0,
+    //     licence_key: sasConfig.customerKey,
+    //   });
+    //   alert(response.data);
+    //   bindSummary('SAS_AZURE');
+    // } catch (error) {
+    //   console.error('Error validating licence:', error);
+    // }
   };
 
   return (
@@ -243,7 +243,8 @@ const OnlineConfig = () => {
                     <Form.Control
                       type="text"
                       value={sasConfig.companyName}
-                      disabled
+                      // disabled
+                      onChange={(e) => setSasConfig({ ...sasConfig, companyName: e.target.value })}
                       placeholder="Company Name"
                     />
                   </Col>
@@ -254,7 +255,8 @@ const OnlineConfig = () => {
                     <Form.Control
                       type="text"
                       value={sasConfig.customerKey}
-                      disabled
+                      // disabled
+                      onChange={(e) => setSasConfig({ ...sasConfig, customerKey: e.target.value })}
                       placeholder="Licence Key"
                     />
                     <Row>

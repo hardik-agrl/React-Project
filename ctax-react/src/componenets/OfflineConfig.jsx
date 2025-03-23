@@ -41,7 +41,7 @@ export default function OfflineConfig() {
       return;
     }
     try {
-      const response = await axios.post("/home/InsertOfflineConfig", {
+      const response = await axios.post("http://localhost:5000/api/InsertOfflineConfig", {
         config_type: configType,
         company_name: companyName,
         licence_key: licenseKey,
@@ -49,7 +49,7 @@ export default function OfflineConfig() {
         password: password,
         trail_balance_api: trialBalanceApi,
       });
-      alert(response.data);
+      alert(response.data.message);
       fetchData();
     } catch (error) {
       console.error("Error saving data", error);

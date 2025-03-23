@@ -4,10 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-// import Data from "./models/Data.js";
-import OnlineImport from "./models/OnlineImport.js";
-import OfflineData from "./models/OfflineData.js";
-import OfflineImport from "./models/OfflineImport.js";
+
 
 import onlineRoute from "./routes/onlineRoute.js"; // Import routes
 import onlineImpRoute from "./routes/onlineImpRoute.js"; // Import routes
