@@ -15,15 +15,16 @@ export default function ImportData() {
     setDataSummary([]);
     try {
       const response = await axios.get("http://localhost:5000/api/onlineImp"
-        //   , {
-          //   params: {
-            //     from_date: fromDate.toISOString().split("T")[0],
-            //     to_date: toDate.toISOString().split("T")[0],
-            //   },
-            // }
+          , {
+            
+                from_date: fromDate.toISOString().split("T")[0],
+                to_date: toDate.toISOString().split("T")[0],
+              },
+            
           );
-          {console.log(fromDate.toISOString())}
+          
           {console.log(fromDate.toISOString().split("T")[0])}
+          {console.log(toDate.toISOString().split("T")[0])}
       setDataSummary(response.data);
       console.log(response.data[0])
     } catch (error) {
@@ -94,6 +95,7 @@ export default function ImportData() {
         <table className="table">
           <thead>
             <tr>
+              {/* <th>Date</th> */}
               <th>GL No</th>
               <th>GL Name</th>
               <th>Amount</th>
@@ -107,6 +109,8 @@ export default function ImportData() {
             {dataSummary.length > 0 ? (
               dataSummary.map((item, index) => (
                 <tr key={index}>
+
+                  {/* <td>{item.date}</td> */}
                   <td>{item.glNo}</td>
                   <td>{item.glName}</td>
                   <td>{item.amount}</td>

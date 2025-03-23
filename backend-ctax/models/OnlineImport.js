@@ -7,7 +7,8 @@ const OnlineImportSchema = new mongoose.Schema({
     debt: String,
     credit: String,
     accountType: String,
-    amountCategory: String
+    amountCategory: String,
+    date:String
     
 });
 
