@@ -11,6 +11,7 @@ import onlineImpRoute from "./routes/onlineImpRoute.js"; // Import routes
 import offlineRoute from "./routes/offlineRoute.js"; // Import routes
 import offlineImpRoute from "./routes/offlineImpRoute.js"; // Import routes
 
+import { poolPromise } from "./db.js";
 
 
 dotenv.config();
@@ -58,5 +59,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 //   const token = jwt.sign({ userId: user._id }, "your_jwt_secret", { expiresIn: "1h" });
 //   res.json({ token });
 // });
+
+poolPromise();
 
 app.listen(5000, () => console.log("Server running on port 5000"));
