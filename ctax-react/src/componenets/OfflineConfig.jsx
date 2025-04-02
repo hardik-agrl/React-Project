@@ -20,11 +20,11 @@ export default function OfflineConfig() {
       const data = response.data;
       if (data.length > 0) {
         const itm = data[0];
-        setCompanyName(itm.companyName || "");
-        setLicenseKey(itm.lisenceKey || "");
-        setUserId(itm.userId || "");
+        setCompanyName(itm.company_name || "");
+        setLicenseKey(itm.licence_key || "");
+        setUserId(itm.user_id || "");
         setPassword(itm.password || "");
-        setTrialBalanceApi(itm.balanceApi || "");
+        setTrialBalanceApi(itm.trail_balance_api || "");
         setValidationStatus("License Validated");
         console.log(itm);
       } else {
@@ -57,15 +57,15 @@ export default function OfflineConfig() {
   };
 
   const handleValidate = async () => {
-    try {
-      const response = await axios.post("/Home/InsertCtaxOfflineConfingValidate", {
-        licence_key: licenseKey,
-      });
-      alert(response.data);
-      fetchData();
-    } catch (error) {
-      console.error("Error validating license", error);
-    }
+    // try {
+    //   const response = await axios.post("/Home/InsertCtaxOfflineConfingValidate", {
+    //     licence_key: licenseKey,
+    //   });
+    //   alert(response.data);
+    //   fetchData();
+    // } catch (error) {
+    //   console.error("Error validating license", error);
+    // }
   };
 
   return (

@@ -1,10 +1,10 @@
 import sql from "mssql";
 
 const config = {
-  user: "hardik",
-  password: "87654321",
+  user: "sa",
+  password: "12345678",
   server: "localhost",
-  database: "ctax",
+  database: "Ctax_test",
   options: {
     encrypt: false,
     trustServerCertificate: true,
@@ -31,6 +31,8 @@ const connectDB = async () => {
   }
   return poolPromise;
 };
+
+
 
 // Export the connection pool and sql module
 export { connectDB, sql };

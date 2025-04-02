@@ -1,15 +1,15 @@
 import express from "express";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import auth from "./routes/auth.js"
-import onlineRoute from "./routes/onlineRoute.js"; // Import routes
-import onlineImpRoute from "./routes/onlineImpRoute.js"; // Import routes
-import offlineRoute from "./routes/offlineRoute.js"; // Import routes
-import offlineImpRoute from "./routes/offlineImpRoute.js"; // Import routes
+// import auth from "./routes/auth.js"
+// import onlineRoute from "./routes/onlineRoute.js"; // Import routes
+// import onlineImpRoute from "./routes/onlineImpRoute.js"; // Import routes
+// import offlineRoute from "./routes/offlineRoute.js"; // Import routes
+// import offlineImpRoute from "./routes/offlineImpRoute.js"; // Import routes
 
-// import { poolPromise } from "./db.js";
+import { connectDB } from "./db.js";
 
 // import userRouter from './routes/userRouter.js'
 import mssqlAuth from './mssql_routes/mssqlAuth.js'
@@ -47,33 +47,34 @@ app.use("/api",sqlOfflineImpRoute)
 // poolPromise();
 
 
-import sql from "mssql";
-import "msnodesqlv8";
+// import sql from "mssql";
+// import "msnodesqlv8";
 
-import "dotenv/config"; // Correct way to use dotenv with ES Modules
+// import "dotenv/config"; // Correct way to use dotenv with ES Modules
 
-const config = {
-  server: "LAPTOP-2J54DEKI\\SQLEXPRESS", // OR "LAPTOP-2J54DEKI\\SQLEXPRESS"
-  database: "ctax",
-  driver: "msnodesqlv8",
-  options: {
-    trustedConnection: true,
-    parseJSON: true, // Fixes JSON parsing issues
-  },
-};
+// const config = {
+//   server: "LAPTOP-2J54DEKI\\SQLEXPRESS", // OR "LAPTOP-2J54DEKI\\SQLEXPRESS"
+//   database: "ctax",
+//   driver: "msnodesqlv8",
+//   options: {
+//     trustedConnection: true,
+//     parseJSON: true, // Fixes JSON parsing issues
+//   },
+// };
 
-async function testConnection() {
-  try {
-    let pool = await sql.connect(config);
-    console.log("✅ Successfully connected to SQL Server!");
-    pool.close(); // Close connection after testing
-  } catch (err) {
-    console.error("❌ SQL Server connection failed:", err);
-  }
-}
+// async function testConnection() {
+//   try {
+//     let pool = await sql.connect(config);
+//     console.log("✅ Successfully connected to SQL Server!");
+//     pool.close(); // Close connection after testing
+//   } catch (err) {
+//     console.error("❌ SQL Server connection failed:", err);
+//   }
+// }
 
-testConnection();
+// testConnection();
 
+connectDB();
 
 
 

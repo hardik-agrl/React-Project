@@ -23,18 +23,24 @@ router.post('/InsertOfflineConfig', async (req, res) => {
         const pool = await connectDB();
         await pool
             .request()
-            .input('configType', sql.VarChar, config_type)
-            .input('companyName', sql.VarChar, company_name)
-            .input('licenceKey', sql.VarChar, licence_key)
-            .input('userId', sql.VarChar, user_id)
+            .input('config_type', sql.VarChar, config_type)
+            .input('company_name', sql.VarChar, company_name)
+            .input('licence_key', sql.VarChar, licence_key)
+            .input('user_id', sql.VarChar, user_id)
             .input('password', sql.VarChar, password)
-            .input('trailBalanceApi', sql.VarChar, trail_balance_api)
-            .execute('InsertOfflineConfig'); // Call stored procedure
+            .input('trail_balance_api', sql.VarChar, trail_balance_api)
+            .query(`
+                INSERT INTO OfflineData (config_type, company_name, licence_key, user_id, password, trail_balance_api)
+                VALUES (@config_type, @company_name, @licence_key, @user_id, @password, @trail_balance_api);
+            `);
 
         res.status(201).json({ message: 'Posted Successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error Posting data', error });
+        console.error(error);
     }
 });
+
+
 
 export default router;

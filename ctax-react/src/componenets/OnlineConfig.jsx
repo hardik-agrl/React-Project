@@ -55,18 +55,18 @@ const OnlineConfig = () => {
       } else if (type === "sas") {
         setSasConfig((prevSasConfig) => ({
           ...prevSasConfig,
-          clientId: data.clientId, 
-          clientSecret: data.clientSecret,
+          clientId: data.client_id, 
+          clientSecret: data.client_secret,
           username: data.username,
           password: data.password,
           organizationId: data.organizationId,
           secretId: data.secretId,
           scope: data.scope,
-          accessTokenUrl: data.accessTokenUrl,
-          apiName: data.apiName,
-          apiNameGlEntries: data.apiNameGlEntries,
-          customerKey: data.customerKey,
-          companyName: data.companyName,
+          accessTokenUrl: data.access_token_url,
+          apiName: data.api_name,
+          apiNameGlEntries: data.api_name_gl_entries,
+          customerKey: data.customer_key,
+          companyName: data.company_name,
           licenceValidationStatus: "Valid", 
         }));
       }
@@ -111,23 +111,23 @@ const OnlineConfig = () => {
     }
   };
 
-  const handleSqlSubmit = async () => {
-    const config = {
-      config_from_id: sqlConfig.config_from_id || 0,
-      user_name: sqlConfig.username,
-      password: sqlConfig.password,
-      api_name: sqlConfig.apiName,
-      config_from_type: 'SQL_API',
-    };
+  // const handleSqlSubmit = async () => {
+  //   const config = {
+  //     config_from_id: sqlConfig.config_from_id || 0,
+  //     user_name: sqlConfig.username,
+  //     password: sqlConfig.password,
+  //     api_name: sqlConfig.apiName,
+  //     config_from_type: 'SQL_API',
+  //   };
 
-    try {
-      const response = await axios.post('/Home/InsertCtax_ConfigurationForm', config);
-      alert(response.data);
-      bindSummary('SQL_API');
-    } catch (error) {
-      console.error('Error submitting SQL configuration:', error);
-    }
-  };
+  //   try {
+  //     const response = await axios.post('/Home/InsertCtax_ConfigurationForm', config);
+  //     alert(response.data);
+  //     bindSummary('SQL_API');
+  //   } catch (error) {
+  //     console.error('Error submitting SQL configuration:', error);
+  //   }
+  // };
 
   const handleValidateLicence = async () => {
     // try {

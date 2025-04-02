@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/online', async (req, res) => {
   try {
     const pool = await connectDB();
-    const result = await pool.request().query('SELECT * FROM OnlineData');
+    const result = await pool.request().query('SELECT * FROM OnlineConfig');
     res.json(result.recordset);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching data', error });
@@ -54,6 +54,7 @@ router.post('/InsertOnlineConfig', async (req, res) => {
     res.status(201).json('Form Posted Successfully');
   } catch (error) {
     res.status(500).json({ message: 'Error Posting Data', error });
+    console.log(error.message)
   }
 });
 
