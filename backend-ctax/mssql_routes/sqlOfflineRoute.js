@@ -4,7 +4,7 @@ import  {connectDB}  from '../db.js';
 
 const router = express.Router();
 
-// Fetch all data from SQL Server
+
 router.get('/offline', async (req, res) => {
     try {
         const pool = await connectDB();
@@ -15,7 +15,7 @@ router.get('/offline', async (req, res) => {
     }
 });
 
-// Insert data into SQL Server using Stored Procedure
+
 router.post('/InsertOfflineConfig', async (req, res) => {
     const { config_type, company_name, licence_key, user_id, password, trail_balance_api } = req.body;
     

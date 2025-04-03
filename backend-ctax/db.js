@@ -8,12 +8,12 @@ const config = {
   options: {
     encrypt: false,
     trustServerCertificate: true,
-    requestTimeout: 30000, // Increase timeout (30 sec)
-    enableArithAbort: true, // Fixes some disconnection issues
+    requestTimeout: 30000, 
+    enableArithAbort: true, 
   },
 };
 
-// Global pool connection (only one instance)
+
 let poolPromise;
 
 const connectDB = async () => {
@@ -26,7 +26,7 @@ const connectDB = async () => {
       })
       .catch((err) => {
         console.error("❌ Database Connection Failed! Error:", err);
-        process.exit(1); // Exit process on failure
+        process.exit(1); 
       });
   }
   return poolPromise;
@@ -34,5 +34,4 @@ const connectDB = async () => {
 
 
 
-// Export the connection pool and sql module
 export { connectDB, sql };

@@ -5,7 +5,7 @@ import { connectDB } from '../db.js';
 
 const router = express.Router();
 
-// Login
+
 router.post('/auth/login', async (req, res) => {
     const { company_name, license_key } = req.body;
 

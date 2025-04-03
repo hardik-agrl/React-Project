@@ -22,8 +22,7 @@ export default function OfflineConfig() {
       const data = response.data;
       if (data.length > 0) {
         const itm = data[0];
-        // setCompanyName(itm.company_name || "");
-        // setLicenseKey(itm.licence_key || "");
+        
         setUserId(itm.user_id || "");
         setPassword(itm.password || "");
         setTrialBalanceApi(itm.trail_balance_api || "");
@@ -45,8 +44,7 @@ export default function OfflineConfig() {
     try {
       const response = await axios.post("http://localhost:5000/api/InsertOfflineConfig", {
         config_type: configType,
-        // company_name: companyName,
-        // licence_key: licenseKey,
+        
         user_id: userId,
         password: password,
         trail_balance_api: trialBalanceApi,
@@ -59,15 +57,7 @@ export default function OfflineConfig() {
   };
 
   const handleValidate = async () => {
-    // try {
-    //   const response = await axios.post("/Home/InsertCtaxOfflineConfingValidate", {
-    //     licence_key: licenseKey,
-    //   });
-    //   alert(response.data);
-    //   fetchData();
-    // } catch (error) {
-    //   console.error("Error validating license", error);
-    // }
+    
   };
 
   return (
@@ -102,7 +92,7 @@ export default function OfflineConfig() {
                 style={{ backgroundColor: "#eee" }}
                 value={companyName}
                 disabled
-                // onChange={(e) => setCompanyName(e.target.value)}
+                
                 placeholder="Company Name"
               />
             </div>
@@ -116,18 +106,11 @@ export default function OfflineConfig() {
                 className="form-control"
                 style={{ backgroundColor: "#eee" }}
                 value={licenseKey}
-                // onChange={(e) => setLicenseKey(e.target.value)}
+                
                 disabled
                 placeholder="Licence Key"
               />
-              {/* <div className="row">
-                <div className="col-sm-10 text-right">
-                  <label>Status: <span className={`badge ${validationStatus === "License Validated" ? "badge-success" : "badge-success"}`}>{validationStatus}</span></label>
-                </div>
-                <div className="col-sm-2 text-right">
-                  <button type="button" className="btn btn-sm btn-danger mt-1" onClick={handleValidate}>Validate</button>
-                </div>
-              </div> */}
+              
             </div>
           </div>
 

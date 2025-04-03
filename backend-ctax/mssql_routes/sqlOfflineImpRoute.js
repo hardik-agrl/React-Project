@@ -1,10 +1,10 @@
 import express from 'express';
 import sql from 'mssql';
-import  {connectDB}  from '../db.js'; // Import database configuration
+import  {connectDB}  from '../db.js'; 
 
 const router = express.Router();
 
-// Fetch all data from SQL Server
+
 router.get('/offlineImp', async (req, res) => {
     try {
         const pool = await connectDB();

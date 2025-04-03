@@ -95,7 +95,7 @@ export default function ImportData() {
         <table className="table">
           <thead>
             <tr>
-              {/* <th>Date</th> */}
+              
               <th>GL No</th>
               <th>GL Name</th>
               <th>Amount</th>
@@ -110,7 +110,7 @@ export default function ImportData() {
               dataSummary.map((item, index) => (
                 <tr key={index}>
 
-                  {/* <td>{item.date}</td> */}
+                  
                   <td>{item.glNo}</td>
                   <td>{item.glName}</td>
                   <td>{item.amount}</td>

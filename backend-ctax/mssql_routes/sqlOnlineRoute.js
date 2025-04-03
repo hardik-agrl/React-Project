@@ -1,11 +1,11 @@
 import express from 'express';
 import sql from 'mssql';
-// import dbConfig from '../config/dbConfig.js'; // Import database configuration
+
 import  {connectDB}  from '../db.js';
 
 const router = express.Router();
 
-// Fetch all data from SQL Server
+
 router.get('/online', async (req, res) => {
   try {
     const pool = await connectDB();
@@ -16,7 +16,7 @@ router.get('/online', async (req, res) => {
   }
 });
 
-// Insert data into SQL Server using Stored Procedure
+
 router.post('/InsertOnlineConfig', async (req, res) => {
   const {
     client_id,

@@ -4,7 +4,7 @@ import  {connectDB}  from '../db.js';
 
 const router = express.Router();
 
-// Fetch all data from SQL Server
+
 router.get('/onlineImp', async (req, res) => {
     const { from_date, to_date } = req.body;
     try {
@@ -12,7 +12,7 @@ router.get('/onlineImp', async (req, res) => {
         let query = 'SELECT * FROM OnlineImport';
         let request = pool.request();
 
-        // If date filters are provided, add WHERE condition
+        
         if (from_date && to_date) {
             query += ' WHERE created_at BETWEEN @from_date AND @to_date';
             request.input('from_date', sql.DateTime, from_date)

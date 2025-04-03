@@ -1,12 +1,12 @@
 import express from 'express';
-import OnlineData from '../models/OnlineData.js';  // Import the Mongoose model
+import OnlineData from '../models/OnlineData.js';  
 
 const router = express.Router();
 
-// Fetch all data from MongoDB
+
 router.get('/online', async (req, res) => {
   try {
-    const allData = await OnlineData.find(); // Fetch data from MongoDB
+    const allData = await OnlineData.find(); 
     res.json(allData);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching data', error });
