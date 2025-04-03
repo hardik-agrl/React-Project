@@ -4,6 +4,7 @@ import { Form, Button, Row, Col, Card, Badge } from 'react-bootstrap';
 
 const OnlineConfig = () => {
 
+  
 
 
   
@@ -19,8 +20,8 @@ const OnlineConfig = () => {
     accessTokenUrl: '',
     apiName: '',
     apiNameGlEntries: '',
-    companyName: import.meta.env.VITE_COMPANY_NAME || '',
-    customerKey: import.meta.env.VITE_LISENCE_KEY || '',
+    companyName: localStorage.getItem("companyName") || '',
+    customerKey: localStorage.getItem("licenseKey") || '',
     licenceValidationStatus: 'Invalid',
   });
 
@@ -65,8 +66,8 @@ const OnlineConfig = () => {
           accessTokenUrl: data.access_token_url,
           apiName: data.api_name,
           apiNameGlEntries: data.api_name_gl_entries,
-          customerKey: data.customer_key,
-          companyName: data.company_name,
+          // customerKey: data.customer_key,
+          // companyName: data.company_name,
           licenceValidationStatus: "Valid", 
         }));
       }
@@ -97,8 +98,8 @@ const OnlineConfig = () => {
       access_token_url: sasConfig.accessTokenUrl,
       api_name: sasConfig.apiName,
       api_name_gl_entries: sasConfig.apiNameGlEntries,
-      company_name: sasConfig.companyName,
-      customer_key: sasConfig.customerKey,
+      // company_name: sasConfig.companyName,
+      // customer_key: sasConfig.customerKey,
       config_from_type: 'sas',
     };
 
@@ -243,8 +244,8 @@ const OnlineConfig = () => {
                     <Form.Control
                       type="text"
                       value={sasConfig.companyName}
-                      // disabled
-                      onChange={(e) => setSasConfig({ ...sasConfig, companyName: e.target.value })}
+                      disabled
+                      // onChange={(e) => setSasConfig({ ...sasConfig, companyName: e.target.value })}
                       placeholder="Company Name"
                     />
                   </Col>
@@ -255,8 +256,8 @@ const OnlineConfig = () => {
                     <Form.Control
                       type="text"
                       value={sasConfig.customerKey}
-                      // disabled
-                      onChange={(e) => setSasConfig({ ...sasConfig, customerKey: e.target.value })}
+                      disabled
+                      // onChange={(e) => setSasConfig({ ...sasConfig, customerKey: e.target.value })}
                       placeholder="Licence Key"
                     />
                     <Row>

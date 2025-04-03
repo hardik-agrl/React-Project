@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
+
 export default function OfflineConfig() {
   const [configType, setConfigType] = useState("Navision");
-  const [companyName, setCompanyName] = useState("");
-  const [licenseKey, setLicenseKey] = useState("");
+  const [companyName, setCompanyName] = useState(localStorage.getItem("companyName") || '');
+  const [licenseKey, setLicenseKey] = useState(localStorage.getItem("licenseKey") || '');
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [trialBalanceApi, setTrialBalanceApi] = useState("");
@@ -20,8 +22,8 @@ export default function OfflineConfig() {
       const data = response.data;
       if (data.length > 0) {
         const itm = data[0];
-        setCompanyName(itm.company_name || "");
-        setLicenseKey(itm.licence_key || "");
+        // setCompanyName(itm.company_name || "");
+        // setLicenseKey(itm.licence_key || "");
         setUserId(itm.user_id || "");
         setPassword(itm.password || "");
         setTrialBalanceApi(itm.trail_balance_api || "");
@@ -43,8 +45,8 @@ export default function OfflineConfig() {
     try {
       const response = await axios.post("http://localhost:5000/api/InsertOfflineConfig", {
         config_type: configType,
-        company_name: companyName,
-        licence_key: licenseKey,
+        // company_name: companyName,
+        // licence_key: licenseKey,
         user_id: userId,
         password: password,
         trail_balance_api: trialBalanceApi,
@@ -99,7 +101,8 @@ export default function OfflineConfig() {
                 className="form-control"
                 style={{ backgroundColor: "#eee" }}
                 value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
+                disabled
+                // onChange={(e) => setCompanyName(e.target.value)}
                 placeholder="Company Name"
               />
             </div>
@@ -113,17 +116,18 @@ export default function OfflineConfig() {
                 className="form-control"
                 style={{ backgroundColor: "#eee" }}
                 value={licenseKey}
-                onChange={(e) => setLicenseKey(e.target.value)}
+                // onChange={(e) => setLicenseKey(e.target.value)}
+                disabled
                 placeholder="Licence Key"
               />
-              <div className="row">
+              {/* <div className="row">
                 <div className="col-sm-10 text-right">
                   <label>Status: <span className={`badge ${validationStatus === "License Validated" ? "badge-success" : "badge-success"}`}>{validationStatus}</span></label>
                 </div>
                 <div className="col-sm-2 text-right">
                   <button type="button" className="btn btn-sm btn-danger mt-1" onClick={handleValidate}>Validate</button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
