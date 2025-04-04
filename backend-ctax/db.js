@@ -21,11 +21,11 @@ const connectDB = async () => {
     poolPromise = new sql.ConnectionPool(config)
       .connect()
       .then((pool) => {
-        console.log("✅ Connected to MSSQL - Connection Pool Ready");
+        console.log("Connected to MSSQL - Connection Pool Ready");
         return pool;
       })
       .catch((err) => {
-        console.error("❌ Database Connection Failed! Error:", err);
+        console.error("Database Connection Failed! Error:", err);
         process.exit(1); 
       });
   }
