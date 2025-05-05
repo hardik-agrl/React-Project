@@ -1,7 +1,7 @@
 import React from 'react';
 import OfflineConfig from './OfflineConfig';
 import OnlineConfig from './OnlineConfig';
-import ImportData from './importData';
+import ImportData from './ImportData';
 import ImportNavData from './ImportNavData';
 import { Routes, Route } from "react-router-dom";
 

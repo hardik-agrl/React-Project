@@ -5,9 +5,7 @@ export default function ImportNavData() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     handleImport();
-    //   }, [setLoading]);
+    
 
     const handleImport = async () => {
         setLoading(true);

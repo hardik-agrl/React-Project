@@ -14,40 +14,26 @@ export default function ImportData() {
     setLoading(true);
     setDataSummary([]);
     try {
-      const response = await axios.get("http://localhost:5000/api/onlineImp"
-          , {
-            
-                from_date: fromDate.toISOString().split("T")[0],
-                to_date: toDate.toISOString().split("T")[0],
-              },
-            
-          );
-          
-          {console.log(fromDate.toISOString().split("T")[0])}
-          {console.log(toDate.toISOString().split("T")[0])}
+      const response = await axios.get("http://localhost:5000/api/onlineImp", {
+        params: {
+          from_date: fromDate.toLocaleDateString("en-CA"),
+          to_date: toDate.toLocaleDateString("en-CA"),
+        },
+      });
+
+      {
+        console.log(fromDate);
+      }
+      {
+        console.log(toDate);
+      }
       setDataSummary(response.data);
-      console.log(response.data[0])
+      console.log(response.data[0]);
     } catch (error) {
       console.error("Error fetching data", error);
     }
     setLoading(false);
   };
-
-  // const handleImportDataToCtax = async () => {
-  //   setLoadingCtax(true);
-  //   try {
-  //     const response = await axios.get("/home/BCImportDataToCTax", {
-  //       params: {
-  //         from_date: fromDate.toISOString().split("T")[0],
-  //         to_date: toDate.toISOString().split("T")[0],
-  //       },
-  //     });
-  //     alert(response.data);
-  //   } catch (error) {
-  //     console.error("Error importing to Ctax", error);
-  //   }
-  //   setLoadingCtax(false);
-  // };
 
   return (
     <div className="row card-box">
@@ -95,7 +81,7 @@ export default function ImportData() {
         <table className="table">
           <thead>
             <tr>
-              {/* <th>Date</th> */}
+              <th>Created at</th>
               <th>GL No</th>
               <th>GL Name</th>
               <th>Amount</th>
@@ -109,8 +95,14 @@ export default function ImportData() {
             {dataSummary.length > 0 ? (
               dataSummary.map((item, index) => (
                 <tr key={index}>
+                  <td>
+                    {new Date(item.created_at).toLocaleDateString("en-IN", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </td>
 
-                  {/* <td>{item.date}</td> */}
                   <td>{item.glNo}</td>
                   <td>{item.glName}</td>
                   <td>{item.amount}</td>

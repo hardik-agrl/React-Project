@@ -1,26 +1,39 @@
 import sql from "mssql";
-import "msnodesqlv8";
-
-import "dotenv/config"; // Correct way to use dotenv with ES Modules
+import dotenv from 'dotenv';
+dotenv.config();
 
 const config = {
-  server: String.raw`LAPTOP-2J54DEKI\\SQLEXPRESS`, // OR "LAPTOP-2J54DEKI\\SQLEXPRESS"
-  database: "ctax",
-  driver: "msnodesqlv8",
+  user: process.env.DBUSER,
+  password: process.env.PASSWORD,
+  server: process.env.SERVER,
+  database: process.env.DATABASE,
   options: {
-    trustedConnection: true,
-    parseJSON: true, // Fixes JSON parsing issues
+    encrypt: false,
+    trustServerCertificate: true,
+    requestTimeout: 30000, 
+    enableArithAbort: true, 
   },
 };
 
-async function testConnection() {
-  try {
-    let pool = await sql.connect(config);
-    console.log("✅ Successfully connected to SQL Server!");
-    pool.close(); // Close connection after testing
-  } catch (err) {
-    console.error("❌ SQL Server connection failed:", err);
-  }
-}
 
-testConnection();
+let poolPromise;
+
+const connectDB = async () => {
+  if (!poolPromise) {
+    poolPromise = new sql.ConnectionPool(config)
+      .connect()
+      .then((pool) => {
+        console.log("Connected to MSSQL - Connection Pool Ready");
+        return pool;
+      })
+      .catch((err) => {
+        console.error("Database Connection Failed! Error:", err);
+        process.exit(1); 
+      });
+  }
+  return poolPromise;
+};
+
+
+
+export { connectDB, sql };

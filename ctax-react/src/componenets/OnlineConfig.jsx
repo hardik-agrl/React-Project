@@ -4,6 +4,7 @@ import { Form, Button, Row, Col, Card, Badge } from 'react-bootstrap';
 
 const OnlineConfig = () => {
 
+  
 
 
   
@@ -19,8 +20,8 @@ const OnlineConfig = () => {
     accessTokenUrl: '',
     apiName: '',
     apiNameGlEntries: '',
-    companyName: import.meta.env.VITE_COMPANY_NAME || '',
-    customerKey: import.meta.env.VITE_LISENCE_KEY || '',
+    companyName: localStorage.getItem("companyName") || '',
+    customerKey: localStorage.getItem("licenseKey") || '',
     licenceValidationStatus: 'Invalid',
   });
 
@@ -55,18 +56,17 @@ const OnlineConfig = () => {
       } else if (type === "sas") {
         setSasConfig((prevSasConfig) => ({
           ...prevSasConfig,
-          clientId: data.clientId, 
-          clientSecret: data.clientSecret,
+          clientId: data.client_id, 
+          clientSecret: data.client_secret,
           username: data.username,
           password: data.password,
           organizationId: data.organizationId,
           secretId: data.secretId,
           scope: data.scope,
-          accessTokenUrl: data.accessTokenUrl,
-          apiName: data.apiName,
-          apiNameGlEntries: data.apiNameGlEntries,
-          customerKey: data.customerKey,
-          companyName: data.companyName,
+          accessTokenUrl: data.access_token_url,
+          apiName: data.api_name,
+          apiNameGlEntries: data.api_name_gl_entries,
+          
           licenceValidationStatus: "Valid", 
         }));
       }
@@ -97,8 +97,7 @@ const OnlineConfig = () => {
       access_token_url: sasConfig.accessTokenUrl,
       api_name: sasConfig.apiName,
       api_name_gl_entries: sasConfig.apiNameGlEntries,
-      company_name: sasConfig.companyName,
-      customer_key: sasConfig.customerKey,
+      
       config_from_type: 'sas',
     };
 
@@ -111,35 +110,9 @@ const OnlineConfig = () => {
     }
   };
 
-  const handleSqlSubmit = async () => {
-    const config = {
-      config_from_id: sqlConfig.config_from_id || 0,
-      user_name: sqlConfig.username,
-      password: sqlConfig.password,
-      api_name: sqlConfig.apiName,
-      config_from_type: 'SQL_API',
-    };
-
-    try {
-      const response = await axios.post('/Home/InsertCtax_ConfigurationForm', config);
-      alert(response.data);
-      bindSummary('SQL_API');
-    } catch (error) {
-      console.error('Error submitting SQL configuration:', error);
-    }
-  };
-
+  
   const handleValidateLicence = async () => {
-    // try {
-    //   const response = await axios.post('/Home/InsertCtaxSassAzureValidate', {
-    //     id: sasConfig.config_from_id || 0,
-    //     licence_key: sasConfig.customerKey,
-    //   });
-    //   alert(response.data);
-    //   bindSummary('SAS_AZURE');
-    // } catch (error) {
-    //   console.error('Error validating licence:', error);
-    // }
+    
   };
 
   return (
@@ -159,12 +132,7 @@ const OnlineConfig = () => {
                   inline
                 />
               </Col>
-              {/* <Col sm={1}>
-                <a href="#">
-                  <i className="fa fa-info" data-toggle="tooltip" data-html="true"
-                    ><div id='my-tip' className='tip-content hidden'><h2 className='text-white'>Auth 2.0</h2><p>Client ID, Client Secret, Scope, Access Token URL, Api Name is Mandatory</p></div></i>
-                </a>
-              </Col> */}
+              
             </Row>
           </Card.Header>
           <Card.Body>
@@ -243,8 +211,7 @@ const OnlineConfig = () => {
                     <Form.Control
                       type="text"
                       value={sasConfig.companyName}
-                      // disabled
-                      onChange={(e) => setSasConfig({ ...sasConfig, companyName: e.target.value })}
+                      disabled
                       placeholder="Company Name"
                     />
                   </Col>
@@ -255,8 +222,7 @@ const OnlineConfig = () => {
                     <Form.Control
                       type="text"
                       value={sasConfig.customerKey}
-                      // disabled
-                      onChange={(e) => setSasConfig({ ...sasConfig, customerKey: e.target.value })}
+                      disabled
                       placeholder="Licence Key"
                     />
                     <Row>
