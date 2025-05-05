@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/onlineImp', async (req, res) => {
     const { from_date, to_date } = req.query;
-    console.log('Received:', from_date, to_date);
+    // console.log('Received:', from_date, to_date);
     try {
         const pool = await connectDB();
         let query = 'SELECT * FROM OnlineImport';

@@ -1,10 +1,12 @@
 import sql from "mssql";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const config = {
-  user: "sa",
-  password: "12345678",
-  server: "localhost",
-  database: "Ctax_test",
+  user: process.env.DBUSER,
+  password: process.env.PASSWORD,
+  server: process.env.SERVER,
+  database: process.env.DATABASE,
   options: {
     encrypt: false,
     trustServerCertificate: true,
